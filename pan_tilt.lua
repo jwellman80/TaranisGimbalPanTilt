@@ -63,8 +63,8 @@ end
 
 local function run_func(pan, tilt, enablesw, sens, deadband)
   if enablesw > 500 then
-    _pan = _pan + condition_input(pan, 10) * (sens / SENS_ADJUST)
-    _tilt = _tilt + condition_input(tilt, 10) * (sens/SENS_ADJUST)
+    _pan = _pan + condition_input(pan, deadband) * (sens / SENS_ADJUST)
+    _tilt = _tilt + condition_input(tilt, deadband) * (sens/SENS_ADJUST)
 
     _pan = condition_output(_pan)
     _tilt = condition_output(_tilt)
