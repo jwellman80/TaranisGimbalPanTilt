@@ -2,6 +2,7 @@
 Pan Tilt Script for the Taranis Controller
 
 **To Install**
+
 1. Copy the .lua script to your <Taranis SD>SCRIPTS/MIXES
 2. On the Taranis, browse to the LUA Menu (you will need an OpenTX firmware with LUA enabled.)
 (/docs/lua.png)
