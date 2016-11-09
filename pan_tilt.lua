@@ -1,43 +1,19 @@
 --[[
 
-SCRIPT: stick2rate.lua
-AUTHOR: Mike Shellim
-URL: http://rc-soar.com/opentx
-DATE: 14 Sept 2014
-VERSION: 1.0
-DESCRIPTION:
+pan_tilt.lua
 
-Script to convert stick position into rate command.
-Typical usage: for controlling a gimbal for smoother control and 'nudging'.
-Pull SH to recentre
+Created By: Jared Wellman
+For: OpenTX Pan/Tilt with Gimbal like control (speed rather than position)
 
-TESTED
-OpenTx v. 2.08
+Last Modified: 2016/11/08
 
-INPUTS
-ctrl: control stick 'ail' (default), 'ele', 'thr', 'rud'
-Sens: sensitivity (1 - 100, default = 50)
-
-INSTALLATION
-1. Save script with .LUA extension, store in /SCRIPTS/MIXES folder on SD Card
-2. Open Custom Scripts menu in the transmitter
-3. Assign this script to empty slot
-4. Open script, and test by moving aileron stick and observing 'gimb' output
-5. Close Scripts menu
-6. Check that [i]gimb appears in the mixer Src list
-
-MIXER SETUP
-- In the gimbal channel, create single mixer line, call it 'gimbal'
-- Specify Src = [i]gimb
 --]]
 
 local _pan = 0
 local _tilt = 0
 local SENS_ADJUST = 2048
 
--------------------
--- inputs / outputs
--------------------
+-- inputs
 
 local inp =
     {
@@ -45,34 +21,22 @@ local inp =
         { "Tilt", SOURCE },
         { "EnableSw", SOURCE },
         { "Sens", VALUE, 1, 100, 50 },
-        { "Deadband", VALUE, 1, 100, 10 }	-- sensitivity
+        { "Deadband", VALUE, 1, 100, 10 }
 
     }
-local out = { "pan", "tilt"} 	-- output position
+
+-- outputs
+
+local out = { "pan", "tilt"}
 
 ----------------------------
--- initialisation function
+-- init function
 ----------------------------
 
 local function init_func()
 
-    -- -- Store ids of permissable gimbal controls
-    -- -- (saves expensive lookups in run_func)
-    --
-    -- control_id [1] = getFieldInfo ("ail").id
-    -- control_id [2] = getFieldInfo ("ele").id
-    -- control_id [3] = getFieldInfo ("rud").id
-    -- control_id [4] = getFieldInfo ("thr").id
-    --
-    -- -- switch SH
-    --
-    -- control_id [5] = getFieldInfo ("sh").id
-
 end
 
--------------------------------
--- periodically called function
--------------------------------
 
 local function condition_output(val)
 
